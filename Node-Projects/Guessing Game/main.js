@@ -4,7 +4,7 @@ import inquirer from "inquirer";
 let correctNumber = Math.floor(Math.random() * 10 + 1);
 let guessedNumber;
 let remaingChances = 3;
-console.log(` Welcome to the 'a_guessing_game' This is a simple guessing game where you have to guess a number between 1-10 \n\tYou Have Only 3 Chances to Guess the Correct Number\t`);
+console.log(`\t\t Welcome to 'a_guessing_game'\n\tYou Have Only 3 Chances to Guess the Correct Number\t`);
 // Used do while
 do {
     guessedNumber = await inquirer.prompt({
