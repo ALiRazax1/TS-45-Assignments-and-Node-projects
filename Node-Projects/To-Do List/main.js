@@ -10,7 +10,7 @@ do {
             name: "options",
             type: "list",
             message: "Please Select an Option",
-            choices: ["Add Task", "Remove Task", "View List", "Exit"],
+            choices: ["Add Task", "Update Task", "Remove Task", "View List", "Exit"],
         },
     ]);
     // Add Task Option
@@ -21,23 +21,35 @@ do {
             message: "Please Add Your Task",
         });
         toDoList.unshift(addTsk.newTask);
-        console.log(`${addTsk.newTask} Successfully Added in Your TO_DO List`);
+        console.log(`${addTsk.newTask} Successfully Added in Your To_Do List`);
+    }
+    // Update Task Option
+    else if (todo.options === "Update Task") {
+        const updateTsk = await inquirer.prompt({
+            name: "updateTask",
+            type: "list",
+            message: "Please Select Your Task You Want to Update",
+            choices: toDoList,
+        });
+        const addTsk = await inquirer.prompt({
+            name: "newTask",
+            type: "input",
+            message: "Please Add Your Task",
+        });
+        const indexFinder = toDoList.indexOf(updateTsk.updateTask);
+        toDoList.splice(indexFinder, 1, addTsk.newTask);
+        console.log("Your To_Do List Updated Successfully");
     }
     //  Remove Task Option
     else if (todo.options === "Remove Task") {
         const removeTsk = await inquirer.prompt({
             name: "removeTask",
-            type: "input",
-            message: "Please Type Your You Want to Remove",
+            type: "list",
+            message: "Please Select Your Task, You Want to Remove",
+            choices: toDoList,
         });
-        if (toDoList.includes(removeTsk.removeTask)) {
-            let indexFinder = toDoList.indexOf(removeTsk.removeTask);
-            toDoList.splice(indexFinder, 1);
-            console.log(`${removeTsk.removeTask} Successfully Removed`);
-        }
-        else {
-            console.log(`No Task Found With A Name of ${removeTsk.removeTask}`);
-        }
+        toDoList = toDoList.filter((task) => task !== removeTsk.removeTask);
+        console.log(`${removeTsk.removeTask} Successfully Removed from Your To_Do List`);
     }
     else if (todo.options === "View List") {
         toDoList.forEach((task) => {

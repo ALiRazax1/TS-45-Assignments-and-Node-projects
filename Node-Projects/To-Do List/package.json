@@ -1,5 +1,5 @@
 {
-  "name": "a_simple_todo_list",
+  "name": "a_cli_todo_list",
   "version": "1.0.0",
   "description": "This is a To-Do app using Typescript, Node.JS and Inquirer",
   "main": "index.js",
