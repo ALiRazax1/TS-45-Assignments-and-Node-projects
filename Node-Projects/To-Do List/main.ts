@@ -42,7 +42,6 @@ do {
     const indexFinder = toDoList.indexOf(updateTsk.updateTask);
     toDoList.splice(indexFinder, 1, addTsk.newTask);
     console.log("Your To_Do List Updated Successfully");
-    
   }
 
   //  Remove Task Option
@@ -56,11 +55,17 @@ do {
 
     toDoList = toDoList.filter((task) => task !== removeTsk.removeTask);
 
-    console.log(`${removeTsk.removeTask} Successfully Removed from Your To_Do List`);
+    console.log(
+      `${removeTsk.removeTask} Successfully Removed from Your To_Do List`
+    );
   } else if (todo.options === "View List") {
-    toDoList.forEach((task) => {
-      console.log(`${toDoList.indexOf(task) + 1}: ${task}`);
-    });
+    if (toDoList.length > 0) {
+      toDoList.forEach((task) => {
+        console.log(`${toDoList.indexOf(task) + 1}: ${task}`);
+      });
+    } else {
+      console.log("Your To_Do List is Empty, Please Add Some Task in Your List");
+    }
   }
   // Exit Option
   else if (todo.options === "Exit") {
@@ -72,4 +77,3 @@ do {
     });
   }
 } while (closeToDo?.exitToDO !== true);
-

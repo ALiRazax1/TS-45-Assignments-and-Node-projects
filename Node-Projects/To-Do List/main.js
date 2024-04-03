@@ -52,9 +52,14 @@ do {
         console.log(`${removeTsk.removeTask} Successfully Removed from Your To_Do List`);
     }
     else if (todo.options === "View List") {
-        toDoList.forEach((task) => {
-            console.log(`${toDoList.indexOf(task) + 1}: ${task}`);
-        });
+        if (toDoList.length > 0) {
+            toDoList.forEach((task) => {
+                console.log(`${toDoList.indexOf(task) + 1}: ${task}`);
+            });
+        }
+        else {
+            console.log("Your To_Do List is Empty, Please Add Some Task in Your List");
+        }
     }
     // Exit Option
     else if (todo.options === "Exit") {
